@@ -139,10 +139,10 @@ def user_stats(df):
         print("Counts by Gender: \n-----------------------\n{} \n".format(df['Gender'].value_counts()))
 
         print("Earliest Birth Year: {}".format(int(df['Birth Year'].min())))
-        print("Oldest Member Age (if still alive...): {}\n".format(oldest_age(df['Birth Year'])))
+        print("Oldest Member Age (if still alive...): {}\n".format(oldest_age(df['Birth Year']))) # this is just a little extra function
 
         print("Most Recent Birth Year: {}".format(int(df['Birth Year'].max())))
-        print("Youngest Member Age: {}\n".format(youngest_age(df['Birth Year'])))
+        print("Youngest Member Age: {}\n".format(youngest_age(df['Birth Year']))) # this is just a little extra function
 
         print("Most Common Birth Year: {}\n".format(int(df['Birth Year'].mode()[0])))
 
