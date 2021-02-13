@@ -134,9 +134,9 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
     try:
-        print("Counts of User Types: \n-----------------------\n{} \n".format(df['User Type'].value_counts()))
+        print("Counts of User Types: \n-----------------------\n{} \n".format(df_value_counts(df['User Type'])))
 
-        print("Counts by Gender: \n-----------------------\n{} \n".format(df['Gender'].value_counts()))
+        print("Counts by Gender: \n-----------------------\n{} \n".format(df_value_counts(df['Gender'])))
 
         print("Earliest Birth Year: {}".format(int(df['Birth Year'].min())))
         print("Oldest Member Age (if still alive...): {}\n".format(oldest_age(df['Birth Year'])))
@@ -169,6 +169,9 @@ def oldest_age(birth_year):
 def youngest_age(birth_year):
     """Just an extra method to calculate age of the youngest user"""
     return int(datetime.now().year - birth_year.max())
+
+def df_value_counts(df_column):
+    return df_column.value_counts()
 
 def main():
     while True:
