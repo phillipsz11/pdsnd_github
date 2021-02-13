@@ -1,15 +1,14 @@
 ### Date created
-Include the date you created this project and README file.
+02/06/21
 
 ### Project Title
-Replace the Project Title
+Python Bikeshare Project
 
 ### Description
-Describe what your project is about and what it does
+This project uses python scripting to input data from a user, load data from one of three csv files, and then make statistical calculations using Python NumPy and Pandas packages.
 
 ### Files used
-Include the files used
+bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+I give all credit to Udacity for providing great course material to complete this project and the data collected for use.
