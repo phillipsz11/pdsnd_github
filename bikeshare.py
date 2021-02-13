@@ -101,9 +101,9 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    print("The most commonly used Start Station is: {} \n".format(df['Start Station'].mode()[0]))
+    print("The most commonly used Start Station is: {} \n".format(mode_of_column(df['Start Station'])))
 
-    print("The most commonly used End Station is: {} \n".format(df['End Station'].mode()[0]))
+    print("The most commonly used End Station is: {} \n".format(mode_of_column(df['End Station'])))
 
 
     df['combination'] = df['Start Station'] + " / " + df['End Station']
@@ -172,6 +172,9 @@ def youngest_age(birth_year):
 
 def df_value_counts(df_column):
     return df_column.value_counts()
+
+def mode_of_column(df_column):
+    return df_column.mode()[0];
 
 def main():
     while True:
