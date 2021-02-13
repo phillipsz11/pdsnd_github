@@ -84,12 +84,12 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    print("The most common month is: {}".format(df['month'].mode()[0]))
+    print("The most common month is: {}".format(mode_of_column(df['month'])))
 
-    print("The most common day of week is: {}".format(df['day_of_week'].mode()[0]))
+    print("The most common day of week is: {}".format(mode_of_column(df['day_of_week'])))
 
     df['hour'] = df['Start Time'].dt.hour
-    print("The most common start hour is: {}".format(df['hour'].mode()[0]))
+    print("The most common start hour is: {}".format(mode_of_column(df['hour'])))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -101,13 +101,13 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    print("The most commonly used Start Station is: {} \n".format(df['Start Station'].mode()[0]))
+    print("The most commonly used Start Station is: {} \n".format(mode_of_column(df['Start Station'])))
 
-    print("The most commonly used End Station is: {} \n".format(df['End Station'].mode()[0]))
+    print("The most commonly used End Station is: {} \n".format(mode_of_column(df['End Station'])))
 
 
     df['combination'] = df['Start Station'] + " / " + df['End Station']
-    print('The most common combination of start station and end station trip is: {}'.format((df['combination'].mode()[0])))
+    print('The most common combination of start station and end station trip is: {}'.format(mode_of_column(df['combination'])))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -134,9 +134,9 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
     try:
-        print("Counts of User Types: \n-----------------------\n{} \n".format(df['User Type'].value_counts()))
+        print("Counts of User Types: \n-----------------------\n{} \n".format(df_value_counts(df['User Type'])))
 
-        print("Counts by Gender: \n-----------------------\n{} \n".format(df['Gender'].value_counts()))
+        print("Counts by Gender: \n-----------------------\n{} \n".format(df_value_counts(df['Gender'])))
 
         print("Earliest Birth Year: {}".format(int(df['Birth Year'].min())))
         print("Oldest Member Age (if still alive...): {}\n".format(oldest_age(df['Birth Year']))) # this is just a little extra function
@@ -144,7 +144,7 @@ def user_stats(df):
         print("Most Recent Birth Year: {}".format(int(df['Birth Year'].max())))
         print("Youngest Member Age: {}\n".format(youngest_age(df['Birth Year']))) # this is just a little extra function
 
-        print("Most Common Birth Year: {}\n".format(int(df['Birth Year'].mode()[0])))
+        print("Most Common Birth Year: {}\n".format(int(mode_of_column(df['Birth Year']))))
 
 
         print("\nThis took %s seconds." % (time.time() - start_time))
@@ -169,6 +169,12 @@ def oldest_age(birth_year):
 def youngest_age(birth_year):
     """Just an extra method to calculate age of the youngest user"""
     return int(datetime.now().year - birth_year.max())
+
+def df_value_counts(df_column):
+    return df_column.value_counts()
+
+def mode_of_column(df_column):
+    return df_column.mode()[0];
 
 def main():
     while True:
